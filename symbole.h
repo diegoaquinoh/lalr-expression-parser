@@ -60,11 +60,23 @@ class ExprMult : public ExprBin {
       virtual double eval(const map<string, double> & valeurs);
 };
 
-class Entier : public Expr {
+class Nombre : public Expr {
    public:
-      Entier(int v) : Expr(), valeur(v) { }
+      Nombre(int v) : Expr(), valeur(v) { }
+      ~Nombre() { }
+      virtual double eval(const map<string, double>& valeurs);
+    
+      virtual void Affiche();
+   protected:
+      int valeur;
+};
+
+class Entier : public Symbole {
+   public:
+      Entier(int v) : Symbole(INT), valeur(v) { }
       ~Entier() { }
       virtual void Affiche();
    protected:
       int valeur;
 };
+
