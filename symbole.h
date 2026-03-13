@@ -1,11 +1,13 @@
 #pragma once
 
 #include <string>
+#include <map>
+
 using namespace std;
 
-enum Identificateurs { OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR };
+enum Identificateurs { EXPR, OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR };
 
-const string Etiquettes[] = { "OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT", "FIN", "ERREUR" };
+const string Etiquettes[] = { "EXPR", "OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT", "FIN", "ERREUR" };
 
 class Symbole {
    public:
@@ -18,6 +20,13 @@ class Symbole {
       int ident;
 };
 
+class Expr : public Symbole {
+public:
+   Expr():Symbole(EXPR) {}
+   virtual~Expr() {}
+   virtual double eval(const map<string, double> & valeurs) = 0;
+};
+
 class Entier : public Symbole {
    public:
       Entier(int v) : Symbole(INT), valeur(v) { }
@@ -26,4 +35,3 @@ class Entier : public Symbole {
    protected:
       int valeur;
 };
-
