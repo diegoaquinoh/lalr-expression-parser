@@ -1,2 +1,14 @@
 #lecture pdfs
 *.pdf 
+
+#context
+poly-en-context-ch5.3-and-8.4-8.6.md
+
+symbole.o
+lexer.o
+main.o
+parser.o
+etat.o
+automate.o
+
+parser
